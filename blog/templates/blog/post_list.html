@@ -1,21 +1,10 @@
-<html>
-    <head>
-        <title>Fatih'in blogu</title>
-    </head>
-    <body>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
         <div>
-            <h1><a href="/">Fatih'in Blog'u</a></h1>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>published: {{ post.published_date }}</p>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        <div>
-            <p>published: 27.01.2020, 12:14</p>
-            <h2><a href="">İlk Blogum</a></h2>
-            <p>Çok heyecanlıyım! Bu benim ilk blogum. Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artık bilgisayar başından kalkmam. </p>
-        </div>
-
-        <div>
-            <p>published: 27.01.2020, 12:20</p>
-            <h2><a href="">İkinci gönderim</a></h2>
-            <p>Bir varmış bir yokmuş, evvel zaman içinde Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artık bilgisayar başından kalkmam. kalbur saman içinde, develer tellal iken, pireler berber iken; ben annemin beşiğini tıngır mıngır sallar iken.</p>
-        </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock content %}
